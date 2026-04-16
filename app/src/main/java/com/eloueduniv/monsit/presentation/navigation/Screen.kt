@@ -18,6 +18,4 @@ sealed class Screen (val route: String) {
         fun createRoute(contactId: String) = "contact_detail/$contactId"
     }
 
-    object MainScreen: Screen("main_screen")
-
 }
