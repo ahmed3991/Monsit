@@ -32,7 +32,7 @@ fun MainScreen(
     onNavigateToAdd: () -> Unit,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.mainUiState.collectAsState()
 
     Scaffold(
         topBar = {

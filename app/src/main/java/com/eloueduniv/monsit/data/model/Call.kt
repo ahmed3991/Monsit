@@ -8,5 +8,6 @@ data class Call(
     val audioUrl: String,
     val transcript: String,
     val summary: String,
-    val contactId: Int
+    val contactId: Int,
+    val note: String?
 )

@@ -17,17 +17,17 @@ class MainViewModel @Inject constructor(
     private val getResentCallsUseCase: GetResentCallsUseCase
 ) : ViewModel() {
 
-    val _uiState = MutableStateFlow(UiState())
+    val _Main_uiState = MutableStateFlow(MainUiState())
 
-    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+    val mainUiState: StateFlow<MainUiState> = _Main_uiState.asStateFlow()
 
     fun loadResentCalls() {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
+            _Main_uiState.update { it.copy(isLoading = true) }
             getResentCallsUseCase().catch{
-                _uiState.update { it.copy(error = it.error, isLoading = false) }
+                _Main_uiState.update { it.copy(error = it.error, isLoading = false) }
             }.collect { calls ->
-                _uiState.update { it.copy(isLoading = false , calls = calls) }
+                _Main_uiState.update { it.copy(isLoading = false , calls = calls) }
             }
         }
     }

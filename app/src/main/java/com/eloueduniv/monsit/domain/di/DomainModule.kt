@@ -1,6 +1,7 @@
 package com.eloueduniv.monsit.domain.di
 
 import com.eloueduniv.monsit.data.repository.CallRepository
+import com.eloueduniv.monsit.domain.usecase.AddCallUseCase
 import com.eloueduniv.monsit.domain.usecase.GetResentCallsUseCase
 import dagger.Module
 import dagger.Provides
@@ -17,5 +18,11 @@ object DomainModule {
     @Singleton
     fun provideGetResentCallsUseCase(callRepository: CallRepository): GetResentCallsUseCase {
         return GetResentCallsUseCase(callRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddCallUseCase(callRepository: CallRepository): AddCallUseCase {
+        return AddCallUseCase(callRepository)
     }
 }
